@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export SA77_BUILD_DISPLAY_ID=$flexVersion
+export SA77_PRODUCT_MODEL="msm8x30"
+export SA77_PRODUCT_BRAND="SONY"
+export SA77_PRODUCT_NAME="sa77"
+export SA77_TARGET_DEVICE="sa77"
+export SA77_PRODUCT_MANUFACTURER="Sony"
