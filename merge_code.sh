@@ -2,7 +2,7 @@
 
 backuppwd=`pwd`
 
-cm_root_dir="/Data/BuildFolder/autobuild/2_sa77"
+cm_root_dir="/Data/BuildFolder/autobuild/2_foo"
 fetch_type="weekly"
 cm_git_host_loc="10.113.0.56"
 
@@ -11,13 +11,13 @@ export cm_code_root_dir=$cm_root_dir/$fetch_type/LINUX/android
 export branch=
 export mergeBranch=
 
-read -p "main trunk name [ex: SA77.1214_J68] " branch
+read -p "main trunk name [ex: foo.1214_foo2] " branch
 if [ "$branch" == "" ];then
       echo -e "\nbranch is empty ! \n"
       return
 fi
 
-read -p "merge branch name [ex: SA77_0_0_026_B] " mergeBranch
+read -p "merge branch name [ex: foo_0_0_026_B] " mergeBranch
 if [ "$mergeBranch" == "" ];then
       echo -e "\nmergeBranch is empty ! \n"
       return
@@ -42,19 +42,19 @@ else
         echo "  Create android Folder..."
 fi
 
-#Merge DA80ICS_FBTBWXX modem files to main trunk, avoid auto merge conflicts
+#Merge foo3ICS_FBTBWXX modem files to main trunk, avoid auto merge conflicts
 if [ 'A' == 'B' ]; then
 cd ~
-rm -rf sa77
-git clone ssh://bruno_lin@$cm_git_host_loc/var/git_repo/device/cci/sa77.git
-cd sa77
+rm -rf foo
+git clone ssh://bruno_lin@$cm_git_host_loc/var/git_repo/device/cci/foo.git
+cd foo
 git checkout remotes/origin/$branch -b $branch
 test -e modem/ && git checkout remotes/origin/$mergeBranch modem/* 
 git checkout remotes/origin/$mergeBranch radio/*
 git commit -a -m "Use modem images from $mergeBranch"
 git push origin
 cd ..
-rm -rf sa77
+rm -rf foo
 cd $backuppwd
 fi
 ####
@@ -81,7 +81,7 @@ cp $backuppwd/repo ./
 cd .repo/manifests/
 git config --add user.name "san_hsu"
 git config --add user.email "san_hsu@compalcomm.com"
-git config --add bugzilla.project "SA77"
+git config --add bugzilla.project "foo"
 git config --add bugzilla.loginname "san_hsu@compalcomm.com"
 git config --add bugzilla.password "1234567"
 cd ../../
@@ -112,11 +112,11 @@ echo ""
 
 ############START-Decken Add#################
 #Decken_Add_20120406
-. './ccienv/sa77_env'
+. './ccienv/foo_env'
 
 #versionNum=$1
-#Merge DA80ICS_FBTBWXX modem files to main trunk, avoid auto merge conflicts
-#cd $cm_code_root_dir/device/cci/da80
+#Merge foo3ICS_FBTBWXX modem files to main trunk, avoid auto merge conflicts
+#cd $cm_code_root_dir/device/cci/foo3
 #git checkout korg/$mergeBranch modem/* 
 #git checkout korg/$mergeBranch radio/*
 #git commit -a -m "Use modem images from $mergeBranch"

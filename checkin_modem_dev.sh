@@ -5,9 +5,9 @@ echo ""
 echo "========== Branch Folder (Android) Information =========="
 
 cd ~
-rm -rf sa77
-git clone ssh://bruno_lin@$cm_git_host_loc/var/git_repo/device/cci/sa77.git
-cd sa77
+rm -rf foo
+git clone ssh://bruno_lin@$cm_git_host_loc/var/git_repo/device/cci/foo.git
+cd foo
 #git checkout remotes/origin/$cm_build_trunk -b $cm_build_trunk
 git checkout remotes/origin/$dev_build_branch -b $dev_build_branch
 

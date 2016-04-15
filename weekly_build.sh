@@ -22,15 +22,15 @@ rm -rf /Data/out_back_up/android/*SOMC*
 
 ###temp mod###
 #if [ 'A' == 'B' ]; then
-cd /Data/BuildFolder/autobuild/modem_sa77/
-. ./WBmodemscript.sh "$cm_build_label" "$modem_branch_name" > modem_sa77.log 2>&1
-cd /Data/BuildFolder/autobuild/2_sa77
+cd /Data/BuildFolder/autobuild/modem_foo/
+. ./WBmodemscript.sh "$cm_build_label" "$modem_branch_name" > modem_foo.log 2>&1
+cd /Data/BuildFolder/autobuild/2_foo
 
 
 ###DETECT modem build status###
-rm -f "/Data/BuildFolder/autobuild/2_sa77/MODEMBUILD_FAIL"
+rm -f "/Data/BuildFolder/autobuild/2_foo/MODEMBUILD_FAIL"
 export MODEM=`echo $cm_build_label | sed 's/\.F//g'`
-if [ ! -e "/Data/BuildFolder/CME_Release/sa77/modem/"$MODEM"_WB" ]; then
+if [ ! -e "/Data/BuildFolder/CME_Release/foo/modem/"$MODEM"_WB" ]; then
     echo "===modem build FAIL===" | tee -a MODEMBUILD_FAIL
     cm_build_modem_ok=n
     python modem_notify_build.py weekly
@@ -64,7 +64,7 @@ fi
 
 #20120924 mark
 if [ "$cm_build_new_branch" == "y" ]; then
-    . ./checkin_flex_j68.sh
+    . ./checkin_flex_foo2.sh
     . ./checkin_matchtable.sh
     #. ./checkin_flex_dev.sh
 
@@ -94,7 +94,7 @@ if [ "$cm_build_new_branch" == "y" ]; then
             return
         fi
 
-        . ./checkin_modem_j68.sh
+        . ./checkin_modem_foo2.sh
         if [ "$checkin_modem_ok" == "no" ]; then
             echo -e "\ncheckin modem FAIL!!!\n"
             return
@@ -113,7 +113,7 @@ fi
 #    return
 #fi
 
-#cd $cm_code_root_dir && ./repo sync cci/flex/common && ./repo sync device/cci/sa77 && cd $cm_root_dir
+#cd $cm_code_root_dir && ./repo sync cci/flex/common && ./repo sync device/cci/foo && cd $cm_root_dir
 #if [ "$cm_build_new_branch" == "y" ]; then
 #    . ./branch.sh
 #fi
@@ -152,7 +152,7 @@ python notify_build.py weekly
 #if [ "$cm_build_ok" == "y" ]; then
     # Generate additional rooted flex
 #    cm_branch_check=`echo $cm_build_trunk | sed 's/\.[0-9]*$//g'`
-#    if [ "$cm_branch_check" == "da80" ];then
+#    if [ "$cm_branch_check" == "foo3" ];then
 #        echo "Generate rooted flex for eMobile"
 #        . ./gen_flex_rooted.sh eMobile
 #    elif [ "$cm_branch_check" == "SBM" ];then

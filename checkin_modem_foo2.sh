@@ -7,15 +7,15 @@ echo "========== Branch Folder (Android) Information =========="
 checkin_modem_ok="no"
 
 cd ~
-rm -rf sa77
-git clone ssh://bruno_lin@$cm_git_host_loc/var/git_repo/device/cci/sa77.git
+rm -rf foo
+git clone ssh://bruno_lin@$cm_git_host_loc/var/git_repo/device/cci/foo.git
 if [ "$?" != "0" ]; then
-    echo -e "git clone /var/git_repo/device/cci/sa77.git FAIL!!!"
+    echo -e "git clone /var/git_repo/device/cci/foo.git FAIL!!!"
     cd $backuppwd
     return
 fi
 
-cd sa77
+cd foo
 #git checkout remotes/origin/$cm_build_trunk -b $cm_build_trunk
 git checkout remotes/origin/$cm_build_branch -b $cm_build_branch
 

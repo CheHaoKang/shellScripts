@@ -19,7 +19,7 @@ rm -f *-android-log.zip *-git-log.zip
 
 echo '. ./ccienv/"$cm_build_project""$cm_build_feature"_env'
 . './ccienv/'$cm_build_project''$cm_build_feature'_env'
-#. './ccienv/da80'$cm_build_feature'_env'
+#. './ccienv/foo3'$cm_build_feature'_env'
 export cm_build_bin_dir=$cm_code_root_dir/out/target/product/$TARGET_PRODUCT
 ##make -j4
 setpaths

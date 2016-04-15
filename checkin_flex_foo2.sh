@@ -34,33 +34,33 @@ fi
 
 #SMP
 test -f Android_Flex_prop.csv && sed -i \
-	-e '/ro\.cci\.flex_version/s/FF_SMP_SA77\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/FF_SMP_SA77\.0\.'$QRMRDetect'\.'$version'/' \
-       	-e '/ro\.version/s/SA77\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/SA77\.0\.'$QRMRDetect'\.'$version'/g' \
-       	-e '/ro\.build\.version\.client/s/SA77\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/SA77\.0\.'$QRMRDetect'\.'$version'/g' \
-       	-e '/ro\.build\.version\.incremental/s/Android\.SA77\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/Android\.SA77\.0\.'$QRMRDetect'\.'$version'/g' \
-       	-e '/ro\.build\.oem\.version/s/Android\.SA77\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/Android\.SA77\.0\.'$QRMRDetect'\.'$version'/g' \
+	-e '/ro\.cci\.flex_version/s/FF_SMP_foo\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/FF_SMP_foo\.0\.'$QRMRDetect'\.'$version'/' \
+       	-e '/ro\.version/s/foo\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/foo\.0\.'$QRMRDetect'\.'$version'/g' \
+       	-e '/ro\.build\.version\.client/s/foo\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/foo\.0\.'$QRMRDetect'\.'$version'/g' \
+       	-e '/ro\.build\.version\.incremental/s/Android\.foo\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/Android\.foo\.0\.'$QRMRDetect'\.'$version'/g' \
+       	-e '/ro\.build\.oem\.version/s/Android\.foo\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/Android\.foo\.0\.'$QRMRDetect'\.'$version'/g' \
        	Android_Flex_prop.csv
         #-e '/ro\.build\.display\.id/s/2\.7\.J\.0\.[0-9]\{3\}[\.F]*/2\.7\.J\.0\.'$version'/g' \
 ###
 
 #DEV
 test -f Android_Flex_prop.csv && sed -i \
-	-e '/ro\.cci\.flex_version/s/FF_DEV_SA77\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/FF_DEV_SA77\.0\.'$QRMRDetect'\.'$version'/' \
-       	-e '/ro\.version/s/SA77\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/SA77\.0\.'$QRMRDetect'\.'$version'/g' \
-       	-e '/ro\.build\.version\.client/s/SA77\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/SA77\.0\.'$QRMRDetect'\.'$version'/g' \
-       	-e '/ro\.build\.version\.incremental/s/Android\.SA77\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/Android\.SA77\.0\.'$QRMRDetect'\.'$version'/g' \
-       	-e '/ro\.build\.oem\.version/s/Android\.SA77\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/Android\.SA77\.0\.'$QRMRDetect'\.'$version'/g' \
+	-e '/ro\.cci\.flex_version/s/FF_DEV_foo\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/FF_DEV_foo\.0\.'$QRMRDetect'\.'$version'/' \
+       	-e '/ro\.version/s/foo\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/foo\.0\.'$QRMRDetect'\.'$version'/g' \
+       	-e '/ro\.build\.version\.client/s/foo\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/foo\.0\.'$QRMRDetect'\.'$version'/g' \
+       	-e '/ro\.build\.version\.incremental/s/Android\.foo\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/Android\.foo\.0\.'$QRMRDetect'\.'$version'/g' \
+       	-e '/ro\.build\.oem\.version/s/Android\.foo\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/Android\.foo\.0\.'$QRMRDetect'\.'$version'/g' \
        	Android_Flex_prop.csv
         #-e '/ro\.build\.display\.id/s/2\.7\.J\.0\.[0-9]\{3\}[\.F]*/2\.7\.J\.0\.'$version'/g' \
 ###
 
 #SHP
 test -f Android_Flex_prop.csv && sed -i \
-	-e '/ro\.cci\.flex_version/s/FF_SHP_SA77\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/FF_SHP_SA77\.0\.'$QRMRDetect'\.'$version'/g' \
-       	-e '/ro\.version/s/SA77\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/SA77\.0\.'$QRMRDetect'\.'$version'/g' \
-       	-e '/ro\.build\.version\.client/s/SA77\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/SA77\.0\.'$QRMRDetect'\.'$version'/g' \
-       	-e '/ro\.build\.version\.incremental/s/Android\.SA77\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/Android\.SA77\.0\.'$QRMRDetect'\.'$version'/g' \
-       	-e '/ro\.build\.oem\.version/s/Android\.SA77\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/Android\.SA77\.0\.'$QRMRDetect'\.'$version'/g' \
+	-e '/ro\.cci\.flex_version/s/FF_SHP_foo\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/FF_SHP_foo\.0\.'$QRMRDetect'\.'$version'/g' \
+       	-e '/ro\.version/s/foo\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/foo\.0\.'$QRMRDetect'\.'$version'/g' \
+       	-e '/ro\.build\.version\.client/s/foo\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/foo\.0\.'$QRMRDetect'\.'$version'/g' \
+       	-e '/ro\.build\.version\.incremental/s/Android\.foo\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/Android\.foo\.0\.'$QRMRDetect'\.'$version'/g' \
+       	-e '/ro\.build\.oem\.version/s/Android\.foo\.0\.'$QRMRDetect'\.[0-9]\{3,4\}[\.F]*/Android\.foo\.0\.'$QRMRDetect'\.'$version'/g' \
        	Android_Flex_prop.csv
         #-e '/ro\.build\.display\.id/s/2\.7\.J\.0\.[0-9]\{3\}[\.F]*/2\.7\.J\.0\.'$version'/g' \       
 ###

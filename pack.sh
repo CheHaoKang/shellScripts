@@ -81,17 +81,17 @@ cp $cm_code_root_dir/ccienv/image/*.mbn $image_dir
 cp $cm_code_root_dir/out/host/linux-x86/bin/adb $image_dir
 cp $cm_code_root_dir/out/host/linux-x86/bin/fastboot $image_dir
 
-### copy images to /media/BU2_SMD/Internal Release/UT Image/DA80_ICS/WBXXX
+### copy images to /media/BU2_SMD/Internal Release/UT Image/foo3_ICS/WBXXX
 #utImagePath="/media/TB/"$cm_build_label
-#utImagePath="/media/BU2_SMD/Internal Release/UT Image/SA77/WB"$cm_build_label
-utImagePath="/media/DB_SA77_WB/WB"$cm_build_label
+#utImagePath="/media/BU2_SMD/Internal Release/UT Image/foo/WB"$cm_build_label
+utImagePath="/media/DB_foo_WB/WB"$cm_build_label
 test -e "$utImagePath" || mkdir -p "$utImagePath"
 cp "$ImagesZip" "$utImagePath"
 
 #### Copy OTA files to $image_dir ####
-cp $cm_code_root_dir'/out/dist/sa77-target_files-Android.'$cm_build_label'.zip' $image_dir
-if [ -f $cm_code_root_dir'/out/dist/sa77-target_files-signed.zip' ]; then
-    cp $cm_code_root_dir'/out/dist/sa77-target_files-signed.zip' $image_dir
+cp $cm_code_root_dir'/out/dist/foo-target_files-Android.'$cm_build_label'.zip' $image_dir
+if [ -f $cm_code_root_dir'/out/dist/foo-target_files-signed.zip' ]; then
+    cp $cm_code_root_dir'/out/dist/foo-target_files-signed.zip' $image_dir
 fi
 cp $cm_code_root_dir/out/dist/*.pkg $image_dir
 cd $image_dir
@@ -101,7 +101,7 @@ if [ -d $cm_code_root_dir/out/dist/Signed_Image ]; then
     cp $cm_code_root_dir/out/dist/Signed_Image/ $image_dir -R
 fi
 
-#if [ 'A' == 'B' ]; then # Don not generate HEX files in DA80
+#if [ 'A' == 'B' ]; then # Don not generate HEX files in foo3
 #. ./genhex_appsbl.sh $cm_build_project'_'$cm_build_feature'.Androidappsbl.'$cm_build_label'.hex' 
 #. ./genhex_main.sh $cm_build_project'_'$cm_build_feature'.Android.'$cm_build_label'.hex'
 
@@ -115,7 +115,7 @@ fi
 #    chmod 644 $cm_build_project'_'$cm_build_feature'_flex*'
 #    chmod 644 flex*.img
 #fi
-#fi # Don not generate HEX files in DA80
+#fi # Don not generate HEX files in foo3
 
 echo "---pack source code---"
 #### pack source code ####
@@ -127,27 +127,27 @@ cd $cm_code_root_dir'/..'
 #CodeBaseZip=$pack_dir'/'$cm_build_project'.Android.'$cm_build_label'_'$cm_build_feature'-codebase.bz2'
 CodeBaseZip=$pack_dir'/'$cm_build_project'.Android.'$cm_build_label'-codebase.bz2'
 tar --use=lbzip2 -cvf $CodeBaseZip --exclude=android/.repo/* --exclude=*.git --exclude=android/out --exclude=android/vendor/cci/security/password.txt android/
-### copy codebase to \\gsm_sw01\BU2-SMD\Internal Release\SW Source Code Release\DA80_ICS
-#test -e "/media/BU2_SMD/Internal Release/SW Source Code Release/SA77/WB"$cm_build_label || mkdir -p "/media/BU2_SMD/Internal Release/SW Source Code Release/SA77/WB"$cm_build_label
-test -e "/media/DB_SA77_CB/WB"$cm_build_label || mkdir -p "/media/DB_SA77_CB/WB"$cm_build_label
+### copy codebase to \\gsm_sw01\BU2-SMD\Internal Release\SW Source Code Release\foo3_ICS
+#test -e "/media/BU2_SMD/Internal Release/SW Source Code Release/foo/WB"$cm_build_label || mkdir -p "/media/BU2_SMD/Internal Release/SW Source Code Release/foo/WB"$cm_build_label
+test -e "/media/DB_foo_CB/WB"$cm_build_label || mkdir -p "/media/DB_foo_CB/WB"$cm_build_label
 #echo "Copy codebase to SW Source Code Release"
-#cp $CodeBaseZip "/media/BU2_SMD/Internal Release/SW Source Code Release/SA77/WB"$cm_build_label
-cp $CodeBaseZip "/media/DB_SA77_CB/WB"$cm_build_label
+#cp $CodeBaseZip "/media/BU2_SMD/Internal Release/SW Source Code Release/foo/WB"$cm_build_label
+cp $CodeBaseZip "/media/DB_foo_CB/WB"$cm_build_label
 #echo "END"
 #cp "$CodeBaseZip" "$utImagePath"
 
 #### pack debug information ####
 #DebugInfoZip=$pack_dir'/'$cm_build_project'_'$cm_build_feature'.Android.'$cm_build_label'-debuginfo.tgz'
-#tar czvf $DebugInfoZip --add-file=android/out/target/product/da80/obj/KERNEL_OBJ/System.map --add-file=android/out/target/product/da80/obj/KERNEL_OBJ/vmlinux --add-file=android/out/target/product/da80/obj/KERNEL_OBJ/.config
+#tar czvf $DebugInfoZip --add-file=android/out/target/product/foo3/obj/KERNEL_OBJ/System.map --add-file=android/out/target/product/foo3/obj/KERNEL_OBJ/vmlinux --add-file=android/out/target/product/foo3/obj/KERNEL_OBJ/.config
 DebugInfoZip=$pack_dir'/'$cm_build_project'.Android.'$cm_build_label'_'$cm_build_feature'-debuginfo.7z'
-7zr a -y -mx=9  $DebugInfoZip android/out/target/product/sa77/obj/KERNEL_OBJ/System.map android/out/target/product/sa77/obj/KERNEL_OBJ/vmlinux android/out/target/product/sa77/obj/KERNEL_OBJ/.config android/out/target/product/sa77/symbols
+7zr a -y -mx=9  $DebugInfoZip android/out/target/product/foo/obj/KERNEL_OBJ/System.map android/out/target/product/foo/obj/KERNEL_OBJ/vmlinux android/out/target/product/foo/obj/KERNEL_OBJ/.config android/out/target/product/foo/symbols
 
-### copy debuginfo to /media/BU2_SMD/Internal Release/UT Image/DA80_ICS/WBXXX
+### copy debuginfo to /media/BU2_SMD/Internal Release/UT Image/foo3_ICS/WBXXX
 cp "$DebugInfoZip" "$utImagePath"
 
 #generate Hex File
 #genhex DSR
-#test -e $cm_code_root_dir/out/target/product/da80/genhex/DA80_android.img && mv $cm_code_root_dir/out/target/product/da80/genhex/DA80_android.img $cm_code_root_dir/out/target/product/da80/genhex/DA80ICS_$cm_build_label.img && tar -jcv -f $cm_code_root_dir/out/target/product/da80/genhex/DA80ICS_$cm_build_label.tar.bz2 $cm_code_root_dir/out/target/product/da80/genhex/DA80ICS_$cm_build_label.img && cp $cm_code_root_dir/out/target/product/da80/genhex/DA80ICS_$cm_build_label.tar.bz2 $image_dir
+#test -e $cm_code_root_dir/out/target/product/foo3/genhex/foo3_android.img && mv $cm_code_root_dir/out/target/product/foo3/genhex/foo3_android.img $cm_code_root_dir/out/target/product/foo3/genhex/foo3ICS_$cm_build_label.img && tar -jcv -f $cm_code_root_dir/out/target/product/foo3/genhex/foo3ICS_$cm_build_label.tar.bz2 $cm_code_root_dir/out/target/product/foo3/genhex/foo3ICS_$cm_build_label.img && cp $cm_code_root_dir/out/target/product/foo3/genhex/foo3ICS_$cm_build_label.tar.bz2 $image_dir
 #
 
 pack_end=`date +"%Y%m%d %T"`

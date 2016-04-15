@@ -31,33 +31,33 @@ fi
 
 #SMP
 test -f Android_Flex_prop.csv && sed -i \
-	-e '/ro\.cci\.flex_version/s/FF_SMP_SA77\.0\.0\.[0-9]\{3\}[\.BF]*/FF_SMP_SA77\.0\.0\.'$version'/' \
-       	-e '/ro\.version/s/SA77\.0\.0\.[0-9]\{3\}[\.BF]*/SA77\.0\.0\.'$version'/g' \
-       	-e '/ro\.build\.version\.client/s/SA77\.0\.0\.[0-9]\{3\}[\.BF]*/SA77\.0\.0\.'$version'/g' \
-       	-e '/ro\.build\.version\.incremental/s/Android\.SA77\.0\.0\.[0-9]\{3\}[\.BF]*/Android\.SA77\.0\.0\.'$version'/g' \
-       	-e '/ro\.build\.oem\.version/s/Android\.SA77\.0\.0\.[0-9]\{3\}[\.BF]*/Android\.SA77\.0\.0\.'$version'/g' \
+	-e '/ro\.cci\.flex_version/s/FF_SMP_foo\.0\.0\.[0-9]\{3\}[\.BF]*/FF_SMP_foo\.0\.0\.'$version'/' \
+       	-e '/ro\.version/s/foo\.0\.0\.[0-9]\{3\}[\.BF]*/foo\.0\.0\.'$version'/g' \
+       	-e '/ro\.build\.version\.client/s/foo\.0\.0\.[0-9]\{3\}[\.BF]*/foo\.0\.0\.'$version'/g' \
+       	-e '/ro\.build\.version\.incremental/s/Android\.foo\.0\.0\.[0-9]\{3\}[\.BF]*/Android\.foo\.0\.0\.'$version'/g' \
+       	-e '/ro\.build\.oem\.version/s/Android\.foo\.0\.0\.[0-9]\{3\}[\.BF]*/Android\.foo\.0\.0\.'$version'/g' \
        	Android_Flex_prop.csv
         #-e '/ro\.build\.display\.id/s/2\.7\.J\.0\.[0-9]\{3\}[\.BF]*/2\.7\.J\.0\.'$version'/g' \
 ###
 
 #DEV
 test -f Android_Flex_prop.csv && sed -i \
-	-e '/ro\.cci\.flex_version/s/FF_DEV_SA77\.0\.0\.[0-9]\{3\}[\.BF]*/FF_DEV_SA77\.0\.0\.'$version'/' \
-       	-e '/ro\.version/s/SA77\.0\.0\.[0-9]\{3\}[\.BF]*/SA77\.0\.0\.'$version'/g' \
-       	-e '/ro\.build\.version\.client/s/SA77\.0\.0\.[0-9]\{3\}[\.BF]*/SA77\.0\.0\.'$version'/g' \
-       	-e '/ro\.build\.version\.incremental/s/Android\.SA77\.0\.0\.[0-9]\{3\}[\.BF]*/Android\.SA77\.0\.0\.'$version'/g' \
-       	-e '/ro\.build\.oem\.version/s/Android\.SA77\.0\.0\.[0-9]\{3\}[\.BF]*/Android\.SA77\.0\.0\.'$version'/g' \
+	-e '/ro\.cci\.flex_version/s/FF_DEV_foo\.0\.0\.[0-9]\{3\}[\.BF]*/FF_DEV_foo\.0\.0\.'$version'/' \
+       	-e '/ro\.version/s/foo\.0\.0\.[0-9]\{3\}[\.BF]*/foo\.0\.0\.'$version'/g' \
+       	-e '/ro\.build\.version\.client/s/foo\.0\.0\.[0-9]\{3\}[\.BF]*/foo\.0\.0\.'$version'/g' \
+       	-e '/ro\.build\.version\.incremental/s/Android\.foo\.0\.0\.[0-9]\{3\}[\.BF]*/Android\.foo\.0\.0\.'$version'/g' \
+       	-e '/ro\.build\.oem\.version/s/Android\.foo\.0\.0\.[0-9]\{3\}[\.BF]*/Android\.foo\.0\.0\.'$version'/g' \
        	Android_Flex_prop.csv
         #-e '/ro\.build\.display\.id/s/2\.7\.J\.0\.[0-9]\{3\}[\.BF]*/2\.7\.J\.0\.'$version'/g' \
 ###
 
 #SHP
 test -f Android_Flex_prop.csv && sed -i \
-	-e '/ro\.cci\.flex_version/s/FF_SHP_SA77\.0\.0\.[0-9]\{3\}[\.BF]*/FF_SHP_SA77\.0\.0\.'$version'/' \
-       	-e '/ro\.version/s/SA77\.0\.0\.[0-9]\{3\}[\.BF]*/SA77\.0\.0\.'$version'/g' \
-       	-e '/ro\.build\.version\.client/s/SA77\.0\.0\.[0-9]\{3\}[\.BF]*/SA77\.0\.0\.'$version'/g' \
-       	-e '/ro\.build\.version\.incremental/s/Android\.SA77\.0\.0\.[0-9]\{3\}[\.BF]*/Android\.SA77\.0\.0\.'$version'/g' \
-       	-e '/ro\.build\.oem\.version/s/Android\.SA77\.0\.0\.[0-9]\{3\}[\.BF]*/Android\.SA77\.0\.0\.'$version'/g' \
+	-e '/ro\.cci\.flex_version/s/FF_SHP_foo\.0\.0\.[0-9]\{3\}[\.BF]*/FF_SHP_foo\.0\.0\.'$version'/' \
+       	-e '/ro\.version/s/foo\.0\.0\.[0-9]\{3\}[\.BF]*/foo\.0\.0\.'$version'/g' \
+       	-e '/ro\.build\.version\.client/s/foo\.0\.0\.[0-9]\{3\}[\.BF]*/foo\.0\.0\.'$version'/g' \
+       	-e '/ro\.build\.version\.incremental/s/Android\.foo\.0\.0\.[0-9]\{3\}[\.BF]*/Android\.foo\.0\.0\.'$version'/g' \
+       	-e '/ro\.build\.oem\.version/s/Android\.foo\.0\.0\.[0-9]\{3\}[\.BF]*/Android\.foo\.0\.0\.'$version'/g' \
        	Android_Flex_prop.csv
         #-e '/ro\.build\.display\.id/s/2\.7\.J\.0\.[0-9]\{3\}[\.BF]*/2\.7\.J\.0\.'$version'/g' \
 ###

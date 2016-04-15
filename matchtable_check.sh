@@ -6,7 +6,7 @@ if [ "$matchtableName" == "nocheck" ]; then
     return
 fi
 
-export type=`cat $backuppwd/weekly/LINUX/android/out/target/product/sa77/system/build.prop | grep "ro.build.type" | sed -r 's/.*=(.*)/\1/g'`
+export type=`cat $backuppwd/weekly/LINUX/android/out/target/product/foo/system/build.prop | grep "ro.build.type" | sed -r 's/.*=(.*)/\1/g'`
 
 cd "$backuppwd"/weekly/LINUX/android/"$type"_SOMCv3
 

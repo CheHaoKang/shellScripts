@@ -75,10 +75,10 @@ subject += " %02d:%02d:%02d\t" % (datetime.now().hour, datetime.now().minute, da
 if build_type == "Weekly Build":
 	bin_url = build_release_host+"/cme_release/" + build_project + "/" + build_branch + "/" + build_feature
 	codebase_url = build_release_host+"/cme_release/" + build_project + "/" + build_branch + "/" + build_feature
-#	bin_url_win = "\\gsm_sw01\BU2-SMD\Internal Release\UT Image\SA77\WB" + build_label
-#	codebase_url_win = "\\gsm_sw01\BU2-SMD\Internal Release\SW Source Code Release\SA77\WB" + build_label
-	bin_url_win = "10.113.1.56\SW_Project\J68\SA77\\2_WeeklyFormal_Build\\WB" + build_label
-	codebase_url_win = "10.113.1.56\SW_Project\J68\SA77\\3_CodeBase\\WB" + build_label
+#	bin_url_win = "\\gsm_sw01\BU2-SMD\Internal Release\UT Image\foo\WB" + build_label
+#	codebase_url_win = "\\gsm_sw01\BU2-SMD\Internal Release\SW Source Code Release\foo\WB" + build_label
+	bin_url_win = "10.113.1.56\SW_Project\foo2\foo\\2_WeeklyFormal_Build\\WB" + build_label
+	codebase_url_win = "10.113.1.56\SW_Project\foo2\foo\\3_CodeBase\\WB" + build_label
 else:
 	bin_url = build_release_host+"/dailybuild/" + build_project + "/" + build_date
 	codebase_url = build_release_host+"/dailybuild/" + build_project + "/" + build_date

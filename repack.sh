@@ -55,5 +55,5 @@ cd "$backuppwd"/weekly/LINUX/android/"$mode"_SOMCv3
 
 zip -ry ../"$mode"_SOMCv3"$repackname".zip .
 cd ..
-cp "$mode"_SOMCv3"$repackname".zip  "/media/BU2_SMD/Internal Release/UT Image/SA77/WB"$folder"/"
+cp "$mode"_SOMCv3"$repackname".zip  "/media/BU2_SMD/Internal Release/UT Image/foo/WB"$folder"/"
 #repack all zips END

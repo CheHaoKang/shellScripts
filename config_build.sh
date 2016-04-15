@@ -23,8 +23,8 @@ if [ "$cm_build_space_OK" == "n" -o "$cm_build_space_OK_2" == "n" -o "$cm_build_
     return
 fi
 
-serverDiskUsed1=`du -sh /media/DB_SA77_WB/ | sed -r 's/([0-9]*)G.*/\1/g'`
-serverDiskUsed2=`du -sh /media/DB_SA77_CB/ | sed -r 's/([0-9]*)G.*/\1/g'`
+serverDiskUsed1=`du -sh /media/DB_foo_WB/ | sed -r 's/([0-9]*)G.*/\1/g'`
+serverDiskUsed2=`du -sh /media/DB_foo_CB/ | sed -r 's/([0-9]*)G.*/\1/g'`
 serverDiskUsed=$(($serverDiskUsed1+$serverDiskUsed2))
 #if [ "$serverDiskUsed" -gt "385" ];then
 #if [ "$serverDiskUsed" -gt "135" ];then
@@ -33,15 +33,15 @@ if [ "$serverDiskUsed" -gt "300" ];then
     return
 fi
 
-ls /media/DB_SA77_WB/WB* > /dev/null
+ls /media/DB_foo_WB/WB* > /dev/null
 if [ "$?" != "0" ]; then
-    echo "FAIL to mount /media/DB_SA77_WB"
+    echo "FAIL to mount /media/DB_foo_WB"
     return
 fi
 
-ls /media/DB_SA77_CB/WB* > /dev/null
+ls /media/DB_foo_CB/WB* > /dev/null
 if [ "$?" != "0" ]; then
-    echo "FAIL to mount /media/DB_SA77_CB"
+    echo "FAIL to mount /media/DB_foo_CB"
     return
 fi
 
@@ -65,7 +65,7 @@ fi
 
 trunk=
 if [ "$yesno" == "n" -o "$yesno" == "no" ];then
-   read -p "   Trunk name [ex: SA77.1214_J68] " trunk
+   read -p "   Trunk name [ex: foo.1214_foo2] " trunk
    if [ "$trunk" == "" ];then
       echo -e "\nTrunk is empty ! \n"
       return
@@ -117,8 +117,8 @@ if [ "$yesno" == "n" -o "$yesno" == "no" ];then
    #fi
 fi
 
-#read -p "Branch name [ex: DA803134WB099]" branch
-read -p "Branch name [ex: SA77_0_0_026] " branch
+#read -p "Branch name [ex: foo33134WB099]" branch
+read -p "Branch name [ex: foo_0_0_026] " branch
 if [ "$branch" == "" ];then
       echo -e "\nBranch is empty ! \n"
       return
@@ -153,28 +153,28 @@ fi
 #fi
 
 #matchtable not exist list name
-read -p "matchtable not exist list name [ex: SA77.12321_J68] " matchtableName
+read -p "matchtable not exist list name [ex: foo.12321_foo2] " matchtableName
 if [ "$matchtableName" == "" ];then
       echo -e "\nmatchtableName is empty ! \n"
       return
 fi
 
-#read -p "Current  Label[ex: DA80_DSR3134.099.0]" cm_current_git_label
-#read -p "Current  Label[ex: SA77.026F.0] " cm_current_git_label
+#read -p "Current  Label[ex: foo3_DSR3134.099.0]" cm_current_git_label
+#read -p "Current  Label[ex: foo.026F.0] " cm_current_git_label
 #if [ "$cm_current_git_label" == "" ];then
 #      echo -e "\nCurrent Label is empty ! \n"
 #      return
 #fi
 
-#read -p "Previous Label[ex: DA80_DSR3134.098.0]" cm_previous_git_label
-#read -p "Previous Label[ex: SA77.025F.0] " cm_previous_git_label
+#read -p "Previous Label[ex: foo3_DSR3134.098.0]" cm_previous_git_label
+#read -p "Previous Label[ex: foo.025F.0] " cm_previous_git_label
 #if [ "$cm_previous_git_label" == "" ];then
 #      echo -e "\nPrevious Label is empty ! \n"
 #      return
 #fi
 
 ###Previous Weekly Build Branch Name
-#read -p "Previous Branch Name[ex: SA77.0.0.004] " previousBranch
+#read -p "Previous Branch Name[ex: foo.0.0.004] " previousBranch
 #if [ "$previousBranch" == "" ];then
 #      echo -e "\nPrevious branch is empty ! \n"
 #      return
@@ -182,7 +182,7 @@ fi
 #END#
 
 ###Current Weekly BUild Branch Name
-#read -p "Current  Branch Name[ex: SA77.0.0.005] " currentBranch
+#read -p "Current  Branch Name[ex: foo.0.0.005] " currentBranch
 #if [ "$currentBranch" == "" ];then
 #      echo -e "\nCurrent branch is empty ! \n"
 #      return

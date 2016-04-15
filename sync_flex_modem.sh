@@ -15,6 +15,6 @@ elif [ $fetchResult == 0 ]; then
     echo -e "\n===Sync Code Success!===\n"
 fi
 #./repo sync cci/flex/common
-#./repo sync device/cci/sa77
+#./repo sync device/cci/foo
 
 cd $backuppwd

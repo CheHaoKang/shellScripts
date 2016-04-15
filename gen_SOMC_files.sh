@@ -3,13 +3,13 @@
 backuppwd=`pwd`
 export sin_type=$1
 
-#utImagePath="/media/BU2_SMD/Internal Release/UT Image/SA77/_WB"$cm_build_label
+#utImagePath="/media/BU2_SMD/Internal Release/UT Image/foo/_WB"$cm_build_label
 #test -e "$utImagePath" || mkdir -p "$utImagePath"
 
 #CCI_IMAGE.zip
-rm -rf weekly/LINUX/android/out/target/product/sa77/sin/
-cp -r sin/ weekly/LINUX/android/out/target/product/sa77/
-cd weekly/LINUX/android/out/target/product/sa77/sin/
+rm -rf weekly/LINUX/android/out/target/product/foo/sin/
+cp -r sin/ weekly/LINUX/android/out/target/product/foo/
+cd weekly/LINUX/android/out/target/product/foo/sin/
 ./sin_all.sh $sin_type
 
 ###fota
@@ -24,10 +24,10 @@ cp vendor/cci/tools/sin/cert_data.dat .
 #fi
 
 if [ "$sin_type" == "v3" ]; then
-    cp -r out/target/product/sa77/sin/image_signed/* out/target/product/sa77/
-    mv out/target/product/sa77/boot.sin out/target/product/sa77/kernel.sin
-    mv out/target/product/sa77/ramdumper.sin out/target/product/sa77/ramdump.sin
-    mv out/target/product/sa77/NON-HLOS.sin out/target/product/sa77/modem.sin
+    cp -r out/target/product/foo/sin/image_signed/* out/target/product/foo/
+    mv out/target/product/foo/boot.sin out/target/product/foo/kernel.sin
+    mv out/target/product/foo/ramdumper.sin out/target/product/foo/ramdump.sin
+    mv out/target/product/foo/NON-HLOS.sin out/target/product/foo/modem.sin
 
     export PRODUCT_PARTITION_CONFIG=vendor/semc/system/fota-update-agent/fsconfig.xml
     export FOTA_TARGET_PRODUCT_NAME=taoshan
@@ -38,11 +38,11 @@ if [ "$sin_type" == "v3" ]; then
 fi
 ###fota
 
-cd $backuppwd/weekly/LINUX/android/out/target/product/sa77/sin/
+cd $backuppwd/weekly/LINUX/android/out/target/product/foo/sin/
 
 mkdir -p img
 
-cp $backuppwd/weekly/LINUX/android/out/target/product/sa77/fotakernel.sin img/fotakernel_S1-SW-TEST-B316-0001-MMC.sin
+cp $backuppwd/weekly/LINUX/android/out/target/product/foo/fotakernel.sin img/fotakernel_S1-SW-TEST-B316-0001-MMC.sin
 mv image_signed/cache.sin img/cache_S1-SW-TEST-B316-0001-MMC.sin
 mv image_signed/ftma.sin img/ftma_S1-ETS-TEST-B316-0001-MMC.sin
 #mv image_signed/kernel.sin img
@@ -60,25 +60,25 @@ unzip S1_BOOT"$sin_type"_"$s1_version".zip -d img/
 rm -rf $backuppwd/weekly/LINUX/android/CCI_IMAGE.zip
 zip -ry $backuppwd/weekly/LINUX/android/CCI_IMAGE.zip img
 
-export type=`cat $backuppwd/weekly/LINUX/android/out/target/product/sa77/system/build.prop | grep "ro.build.type" | sed -r 's/.*=(.*)/\1/g'`
+export type=`cat $backuppwd/weekly/LINUX/android/out/target/product/foo/system/build.prop | grep "ro.build.type" | sed -r 's/.*=(.*)/\1/g'`
 echo $cm_build_label | egrep 9[0-9]\{2\}
 if [ "$?" == "0" ]; then
     export factory="yes"
 fi
 if [ "$type" == "eng" ] && [ "$factory" == "yes" ]; then
-    rm -rf $backuppwd/weekly/LINUX/android/out/target/product/sa77/sin/
-    cp -r $backuppwd/sin/ $backuppwd/weekly/LINUX/android/out/target/product/sa77/
-    cd $backuppwd/weekly/LINUX/android/out/target/product/sa77/sin/
+    rm -rf $backuppwd/weekly/LINUX/android/out/target/product/foo/sin/
+    cp -r $backuppwd/sin/ $backuppwd/weekly/LINUX/android/out/target/product/foo/
+    cd $backuppwd/weekly/LINUX/android/out/target/product/foo/sin/
 
-    #rm -rf $backuppwd/weekly/LINUX/android/out/target/product/sa77/temp
-    #mkdir -p $backuppwd/weekly/LINUX/android/out/target/product/sa77/temp
-    #mv $backuppwd/weekly/LINUX/android/out/target/product/sa77/system.img $backuppwd/weekly/LINUX/android/out/target/product/sa77/temp
-    #mv $backuppwd/weekly/LINUX/android/out/target/product/sa77/userdata.img $backuppwd/weekly/LINUX/android/out/target/product/sa77/temp
-    #mv $backuppwd/weekly/LINUX/android/out/target/product/sa77/cache.img $backuppwd/weekly/LINUX/android/out/target/product/sa77/temp
+    #rm -rf $backuppwd/weekly/LINUX/android/out/target/product/foo/temp
+    #mkdir -p $backuppwd/weekly/LINUX/android/out/target/product/foo/temp
+    #mv $backuppwd/weekly/LINUX/android/out/target/product/foo/system.img $backuppwd/weekly/LINUX/android/out/target/product/foo/temp
+    #mv $backuppwd/weekly/LINUX/android/out/target/product/foo/userdata.img $backuppwd/weekly/LINUX/android/out/target/product/foo/temp
+    #mv $backuppwd/weekly/LINUX/android/out/target/product/foo/cache.img $backuppwd/weekly/LINUX/android/out/target/product/foo/temp
 
-    #make_ext4fs -s  -l 671088640 -a system $backuppwd/weekly/LINUX/android/out/target/product/sa77/system.img $backuppwd/weekly/LINUX/android/out/target/product/sa77/system
-    #make_ext4fs -s  -l 268435456 -a data $backuppwd/weekly/LINUX/android/out/target/product/sa77/userdata.img $backuppwd/weekly/LINUX/android/out/target/product/sa77/data
-    #make_ext4fs -s  -l 67108864 -a cache $backuppwd/weekly/LINUX/android/out/target/product/sa77/cache.img $backuppwd/weekly/LINUX/android/out/target/product/sa77/cache
+    #make_ext4fs -s  -l 671088640 -a system $backuppwd/weekly/LINUX/android/out/target/product/foo/system.img $backuppwd/weekly/LINUX/android/out/target/product/foo/system
+    #make_ext4fs -s  -l 268435456 -a data $backuppwd/weekly/LINUX/android/out/target/product/foo/userdata.img $backuppwd/weekly/LINUX/android/out/target/product/foo/data
+    #make_ext4fs -s  -l 67108864 -a cache $backuppwd/weekly/LINUX/android/out/target/product/foo/cache.img $backuppwd/weekly/LINUX/android/out/target/product/foo/cache
 
     ./sin_all.sh $sin_type
 
@@ -145,7 +145,7 @@ scp cme@10.113.41.212:/Data/fsconfig/fsconfig$sin_type.xml util/data/fsconfig.xm
 scp cme@10.113.41.212:/Data/partition/partition-image_S1-SW-TEST-B316-0001-MBR.sin img/
 #cp $backuppwd/partition.img util/data/
 
-cp ../device/cci/sa77/BoardConfig.mk .
+cp ../device/cci/foo/BoardConfig.mk .
 BOARD_USERDATAIMAGE_PARTITION_SIZE=""
 BOARD_SYSTEMIMAGE_PARTITION_SIZE=""
 BOARD_KERNELIMAGE_PARTITION_SIZE=""
@@ -256,7 +256,7 @@ cd weekly/LINUX/android/
 rm -rf SOMC/
 mkdir -p SOMC
 cd SOMC
-cp ../out/target/product/sa77/system/build.prop .
+cp ../out/target/product/foo/system/build.prop .
 
 mkdir -p util/data/
 rm -rf util/data/semc_kernel_time_stamp.prop
@@ -281,10 +281,10 @@ done
 
 rm -rf img/
 mkdir -p img/
-cp -r ../out/target/product/sa77/obj/KERNEL_OBJ/arch/arm/boot/zImage img/
+cp -r ../out/target/product/foo/obj/KERNEL_OBJ/arch/arm/boot/zImage img/
 
 mkdir -p imgdata/
-cp -r ../out/target/product/sa77/root/ imgdata/
+cp -r ../out/target/product/foo/root/ imgdata/
 
 rm -rf $backuppwd/weekly/LINUX/android/KERNEL.zip
 zip -ry $backuppwd/weekly/LINUX/android/KERNEL.zip util img imgdata
@@ -300,7 +300,7 @@ cd SOMC
 mkdir -p imgdata/
 #mkdir -p alternatives/
 
-cp -r ../out/target/product/sa77/system imgdata/
+cp -r ../out/target/product/foo/system imgdata/
 rm -rf imgdata/system/etc/firmware/dxhdcp2.b00
 rm -rf imgdata/system/etc/firmware/dxhdcp2.b01
 rm -rf imgdata/system/etc/firmware/dxhdcp2.b02
@@ -360,26 +360,26 @@ mkdir -p imgdata/system/vendor/overlay/
 mkdir -p alternatives/
 mkdir -p util/data/notice/system/app/
 
-cp ../out/target/product/sa77/system/etc/product/applications/SnpVUStore.apk imgdata/system/etc/product/applications/
-cp ../out/target/product/sa77/system/app/sneiaccountmanager.apk imgdata/system/app/
+cp ../out/target/product/foo/system/etc/product/applications/SnpVUStore.apk imgdata/system/etc/product/applications/
+cp ../out/target/product/foo/system/app/sneiaccountmanager.apk imgdata/system/app/
 
 #SnpVUStore.apk
 cp -r ../vendor/semc/prebuilt/alternatives/app-snpvustore/ alternatives/
 #SnpVUStore.apk END
 
 #SemcAlbum.apk
-cp ../out/target/product/sa77/system/app/SemcAlbum.apk imgdata/system/app/
-cp -r ../out/target/product/sa77/obj/NOTICE_FILES/src/system/app/SemcAlbum.apk.txt util/data/notice/system/app/
+cp ../out/target/product/foo/system/app/SemcAlbum.apk imgdata/system/app/
+cp -r ../out/target/product/foo/obj/NOTICE_FILES/src/system/app/SemcAlbum.apk.txt util/data/notice/system/app/
 #SemcAlbum.apk END
 
 #SemcMusic.apk
-cp ../out/target/product/sa77/system/app/SemcMusic.apk imgdata/system/app/
-cp -r ../out/target/product/sa77/obj/NOTICE_FILES/src/system/app/SemcMusic.apk.txt util/data/notice/system/app/
+cp ../out/target/product/foo/system/app/SemcMusic.apk imgdata/system/app/
+cp -r ../out/target/product/foo/obj/NOTICE_FILES/src/system/app/SemcMusic.apk.txt util/data/notice/system/app/
 cp -r ../vendor/semc/prebuilt/alternatives/app-semcmusic/ alternatives/
 #SemcMusic.apk END
 
-cp ../out/target/product/sa77/system/vendor/overlay/SemcAlbum-Overlay-300.apk imgdata/system/vendor/overlay/
-cp ../out/target/product/sa77/system/vendor/overlay/SemcMusic-Overlay-MUOFF-300.apk imgdata/system/vendor/overlay/
+cp ../out/target/product/foo/system/vendor/overlay/SemcAlbum-Overlay-300.apk imgdata/system/vendor/overlay/
+cp ../out/target/product/foo/system/vendor/overlay/SemcMusic-Overlay-MUOFF-300.apk imgdata/system/vendor/overlay/
 
 zip -ry $backuppwd/weekly/LINUX/android/common_SOMCv3.zip imgdata alternatives util
 
@@ -392,7 +392,7 @@ rm -rf SOMC/
 mkdir -p SOMC
 cd SOMC
 mkdir -p util/data/notice/
-cp -r ../out/target/product/sa77/obj/NOTICE_FILES/src/* util/data/notice/
+cp -r ../out/target/product/foo/obj/NOTICE_FILES/src/* util/data/notice/
 
 rm -rf util/data/notice/system/app/SemcAlbum.apk.txt
 rm -rf util/data/notice/system/app/SemcMusic.apk.txt
@@ -451,26 +451,26 @@ mkdir -p imgdata/fotaroot/fota
 #mkdir -p util/data/swbomparts/fota_debian_package/
 mkdir -p util/data/
 
-cp ../out/target/product/sa77/fstab.fota imgdata/fotaroot/
-cp ../out/target/product/sa77/init.fota.rc util/data/
-cp ../out/target/product/sa77/redbend.zip util/data/
-cp ../out/target/product/sa77/script.txt util/data/
-cp ../out/target/product/sa77/source_filter.xml util/data/
-cp ../out/target/product/sa77/target_filter.xml util/data/
-cp ../out/target/product/sa77/fota_config.xml util/data/
+cp ../out/target/product/foo/fstab.fota imgdata/fotaroot/
+cp ../out/target/product/foo/init.fota.rc util/data/
+cp ../out/target/product/foo/redbend.zip util/data/
+cp ../out/target/product/foo/script.txt util/data/
+cp ../out/target/product/foo/source_filter.xml util/data/
+cp ../out/target/product/foo/target_filter.xml util/data/
+cp ../out/target/product/foo/fota_config.xml util/data/
 
-cp ../out/target/product/sa77/fotaramdisk/root/sbin/fota-ua img/
-cp ../out/target/product/sa77/fotaramdisk/root/sbin/fotatools/vold.fstab imgdata/fotaroot/sbin/fotatools/
-cp ../out/target/product/sa77/fotaramdisk/root/sbin/fota-tad imgdata/fotaroot/sbin/
-cp ../out/target/product/sa77/fotaramdisk/root/sbin/refreshfs imgdata/fotaroot/sbin/
-cp ../out/target/product/sa77/fotaramdisk/root/sbin/fotatools/toolbox imgdata/fotaroot/sbin/fotatools/
-cp ../out/target/product/sa77/fotaramdisk/root/fota/tzlibasb.* imgdata/fotaroot/fota/
+cp ../out/target/product/foo/fotaramdisk/root/sbin/fota-ua img/
+cp ../out/target/product/foo/fotaramdisk/root/sbin/fotatools/vold.fstab imgdata/fotaroot/sbin/fotatools/
+cp ../out/target/product/foo/fotaramdisk/root/sbin/fota-tad imgdata/fotaroot/sbin/
+cp ../out/target/product/foo/fotaramdisk/root/sbin/refreshfs imgdata/fotaroot/sbin/
+cp ../out/target/product/foo/fotaramdisk/root/sbin/fotatools/toolbox imgdata/fotaroot/sbin/fotatools/
+cp ../out/target/product/foo/fotaramdisk/root/fota/tzlibasb.* imgdata/fotaroot/fota/
 
 cp ../vendor/semc/system/fota-update-agent/fotatypeconfig.py util/bin/
 cp ../vendor/semc/system/fota-update-agent/fota_type_id.xml util/data/
 #cp ../vendor/semc/system/fota-update-agent/swbomparts.xml util/data/swbomparts/fw-fota-odin-user-release/
 
-cp ../out/target/product/sa77/system/vendor/fota/*.png imgdata/fotaroot/fota/
+cp ../out/target/product/foo/system/vendor/fota/*.png imgdata/fotaroot/fota/
 
 cp ../out/host/linux-x86/bin/fs_get_stats util/bin/
 cp ../out/host/linux-x86/bin/genrblist util/bin/
@@ -493,18 +493,18 @@ cd SOMC
 
 mkdir -p imgdata/separate
 
-#test -e "$utImagePath"_old/amss_image_sa77_"$cm_build_label".7z && cp "$utImagePath"_old/amss_image_sa77_"$cm_build_label".7z .
-#test -e "$utImagePath"/amss_image_sa77_"$cm_build_label".7z && cp "$utImagePath"/amss_image_sa77_"$cm_build_label".7z .
-#test -e "/media/BU2_SMD/Internal Release/UT Image/SA77/WB"$cm_build_label/amss_image_sa77_"$cm_build_label".7z && cp "/media/BU2_SMD/Internal Release/UT Image/SA77/WB"$cm_build_label/amss_image_sa77_"$cm_build_label".7z .
-test -e "/media/DB_SA77_WB/WB"$cm_build_label/amss_image_sa77_"$cm_build_label".7z && cp "/media/DB_SA77_WB/WB"$cm_build_label/amss_image_sa77_"$cm_build_label".7z .
-#test -e "/media/BU2_SMD/Internal Release/UT Image/SA77/WB"$cm_build_label"_old"/amss_image_sa77_"$cm_build_label".7z && cp "/media/BU2_SMD/Internal Release/UT Image/SA77/WB"$cm_build_label"_old"/amss_image_sa77_"$cm_build_label".7z .
-test -e "/media/DB_SA77_WB/WB"$cm_build_label"_old"/amss_image_sa77_"$cm_build_label".7z && cp "/media/DB_SA77_WB/WB"$cm_build_label"_old"/amss_image_sa77_"$cm_build_label".7z .
-#cp "$utImagePath"/amss_image_sa77_"$cm_build_label".7z .
-7zr e amss_image_sa77_"$cm_build_label".7z image_all/wcnss.mbn
-7zr e amss_image_sa77_"$cm_build_label".7z image_all/dsp1.mbn
-7zr e amss_image_sa77_"$cm_build_label".7z image_all/dsp2.mbn
-7zr e amss_image_sa77_"$cm_build_label".7z image_all/dsp3.mbn
-rm -rf amss_image_sa77_"$cm_build_label".7z
+#test -e "$utImagePath"_old/amss_image_foo_"$cm_build_label".7z && cp "$utImagePath"_old/amss_image_foo_"$cm_build_label".7z .
+#test -e "$utImagePath"/amss_image_foo_"$cm_build_label".7z && cp "$utImagePath"/amss_image_foo_"$cm_build_label".7z .
+#test -e "/media/BU2_SMD/Internal Release/UT Image/foo/WB"$cm_build_label/amss_image_foo_"$cm_build_label".7z && cp "/media/BU2_SMD/Internal Release/UT Image/foo/WB"$cm_build_label/amss_image_foo_"$cm_build_label".7z .
+test -e "/media/DB_foo_WB/WB"$cm_build_label/amss_image_foo_"$cm_build_label".7z && cp "/media/DB_foo_WB/WB"$cm_build_label/amss_image_foo_"$cm_build_label".7z .
+#test -e "/media/BU2_SMD/Internal Release/UT Image/foo/WB"$cm_build_label"_old"/amss_image_foo_"$cm_build_label".7z && cp "/media/BU2_SMD/Internal Release/UT Image/foo/WB"$cm_build_label"_old"/amss_image_foo_"$cm_build_label".7z .
+test -e "/media/DB_foo_WB/WB"$cm_build_label"_old"/amss_image_foo_"$cm_build_label".7z && cp "/media/DB_foo_WB/WB"$cm_build_label"_old"/amss_image_foo_"$cm_build_label".7z .
+#cp "$utImagePath"/amss_image_foo_"$cm_build_label".7z .
+7zr e amss_image_foo_"$cm_build_label".7z image_all/wcnss.mbn
+7zr e amss_image_foo_"$cm_build_label".7z image_all/dsp1.mbn
+7zr e amss_image_foo_"$cm_build_label".7z image_all/dsp2.mbn
+7zr e amss_image_foo_"$cm_build_label".7z image_all/dsp3.mbn
+rm -rf amss_image_foo_"$cm_build_label".7z
 
 cp ../vendor/cci/tools/vidc.mbn .
 
@@ -562,23 +562,23 @@ if [ ! -f "$utImagePath/CrimsonElf.zip" ]; then
     mkdir -p SOMC
     cd SOMC
 
-    #test -e "$utImagePath"_old/amss_image_sa77_"$cm_build_label".7z && cp "$utImagePath"_old/amss_image_sa77_"$cm_build_label".7z .
-    #test -e "$utImagePath"/amss_image_sa77_"$cm_build_label".7z && cp "$utImagePath"/amss_image_sa77_"$cm_build_label".7z .
-    #test -e "/media/BU2_SMD/Internal Release/UT Image/SA77/WB"$cm_build_label/amss_image_sa77_"$cm_build_label".7z && cp "/media/BU2_SMD/Internal Release/UT Image/SA77/WB"$cm_build_label/amss_image_sa77_"$cm_build_label".7z .
-    test -e "/media/DB_SA77_WB/WB"$cm_build_label/amss_image_sa77_"$cm_build_label".7z && cp "/media/DB_SA77_WB/WB"$cm_build_label/amss_image_sa77_"$cm_build_label".7z .
-    #test -e "/media/BU2_SMD/Internal Release/UT Image/SA77/WB"$cm_build_label"_old"/amss_image_sa77_"$cm_build_label".7z && cp "/media/BU2_SMD/Internal Release/UT Image/SA77/WB"$cm_build_label"_old"/amss_image_sa77_"$cm_build_label".7z .
-    test -e "/media/DB_SA77_WB/WB"$cm_build_label"_old"/amss_image_sa77_"$cm_build_label".7z && cp "/media/DB_SA77_WB/WB"$cm_build_label"_old"/amss_image_sa77_"$cm_build_label".7z .
-    #cp "$utImagePath"/amss_image_sa77_"$cm_build_label".7z .
-    7zr e amss_image_sa77_"$cm_build_label".7z image_all/wcnss.mbn
-    7zr e amss_image_sa77_"$cm_build_label".7z image_all/dsp1.mbn
-    7zr e amss_image_sa77_"$cm_build_label".7z image_all/dsp2.mbn
-    7zr e amss_image_sa77_"$cm_build_label".7z image_all/dsp3.mbn
-    rm -rf amss_image_sa77_"$cm_build_label".7z
+    #test -e "$utImagePath"_old/amss_image_foo_"$cm_build_label".7z && cp "$utImagePath"_old/amss_image_foo_"$cm_build_label".7z .
+    #test -e "$utImagePath"/amss_image_foo_"$cm_build_label".7z && cp "$utImagePath"/amss_image_foo_"$cm_build_label".7z .
+    #test -e "/media/BU2_SMD/Internal Release/UT Image/foo/WB"$cm_build_label/amss_image_foo_"$cm_build_label".7z && cp "/media/BU2_SMD/Internal Release/UT Image/foo/WB"$cm_build_label/amss_image_foo_"$cm_build_label".7z .
+    test -e "/media/DB_foo_WB/WB"$cm_build_label/amss_image_foo_"$cm_build_label".7z && cp "/media/DB_foo_WB/WB"$cm_build_label/amss_image_foo_"$cm_build_label".7z .
+    #test -e "/media/BU2_SMD/Internal Release/UT Image/foo/WB"$cm_build_label"_old"/amss_image_foo_"$cm_build_label".7z && cp "/media/BU2_SMD/Internal Release/UT Image/foo/WB"$cm_build_label"_old"/amss_image_foo_"$cm_build_label".7z .
+    test -e "/media/DB_foo_WB/WB"$cm_build_label"_old"/amss_image_foo_"$cm_build_label".7z && cp "/media/DB_foo_WB/WB"$cm_build_label"_old"/amss_image_foo_"$cm_build_label".7z .
+    #cp "$utImagePath"/amss_image_foo_"$cm_build_label".7z .
+    7zr e amss_image_foo_"$cm_build_label".7z image_all/wcnss.mbn
+    7zr e amss_image_foo_"$cm_build_label".7z image_all/dsp1.mbn
+    7zr e amss_image_foo_"$cm_build_label".7z image_all/dsp2.mbn
+    7zr e amss_image_foo_"$cm_build_label".7z image_all/dsp3.mbn
+    rm -rf amss_image_foo_"$cm_build_label".7z
 
-    #scp cme@10.113.41.212:/Data/BuildFolder/autobuild/modem_sa77/amss/cci_build/image_all/dsp1.mbn .
-    #scp cme@10.113.41.212:/Data/BuildFolder/autobuild/modem_sa77/amss/cci_build/image_all/dsp2.mbn .
-    #scp cme@10.113.41.212:/Data/BuildFolder/autobuild/modem_sa77/amss/cci_build/image_all/dsp3.mbn .
-    #scp cme@10.113.41.212:/Data/BuildFolder/autobuild/modem_sa77/amss/cci_build/image_all/wcnss.mbn .
+    #scp cme@10.113.41.212:/Data/BuildFolder/autobuild/modem_foo/amss/cci_build/image_all/dsp1.mbn .
+    #scp cme@10.113.41.212:/Data/BuildFolder/autobuild/modem_foo/amss/cci_build/image_all/dsp2.mbn .
+    #scp cme@10.113.41.212:/Data/BuildFolder/autobuild/modem_foo/amss/cci_build/image_all/dsp3.mbn .
+    #scp cme@10.113.41.212:/Data/BuildFolder/autobuild/modem_foo/amss/cci_build/image_all/wcnss.mbn .
     #scp cme@10.113.41.212:/Data/vidc/vidc.mbn .
     cp ../vendor/cci/tools/vidc.mbn .
     scp cme@10.113.41.212:/Data/vidc/dxhdcp2.mbn .
@@ -646,26 +646,26 @@ fi
 cd ..
 rm -rf unsigned_imgs
 mkdir -p unsigned_imgs
-cp out/target/product/sa77/cache.img unsigned_imgs
+cp out/target/product/foo/cache.img unsigned_imgs
 if [ "$type" == "eng" ]; then
-    cp out/target/product/sa77/ftma_Development.img unsigned_imgs/ftma.img
+    cp out/target/product/foo/ftma_Development.img unsigned_imgs/ftma.img
 elif [ "$type" == "userdebug" ]; then
-    cp out/target/product/sa77/ftma_Debug.img unsigned_imgs/ftma.img
+    cp out/target/product/foo/ftma_Debug.img unsigned_imgs/ftma.img
 else
-    cp out/target/product/sa77/ftma_Shipping.img unsigned_imgs/ftma.img
+    cp out/target/product/foo/ftma_Shipping.img unsigned_imgs/ftma.img
 fi
-#cp out/target/product/sa77/boot.img unsigned_imgs/kernel.img
+#cp out/target/product/foo/boot.img unsigned_imgs/kernel.img
 ###fota
-cp $backuppwd/weekly/LINUX/android/out/target/product/sa77/fotakernel.img unsigned_imgs
-#mv $backuppwd/weekly/LINUX/android/out/target/product/sa77/fotakernel.img $backuppwd/weekly/LINUX/android/out/target/product/sa77/fotakernel_$sin_type.img
-#mv $backuppwd/weekly/LINUX/android/out/target/product/sa77/fotakernel.sin $backuppwd/weekly/LINUX/android/out/target/product/sa77/fotakernel_$sin_type.sin
+cp $backuppwd/weekly/LINUX/android/out/target/product/foo/fotakernel.img unsigned_imgs
+#mv $backuppwd/weekly/LINUX/android/out/target/product/foo/fotakernel.img $backuppwd/weekly/LINUX/android/out/target/product/foo/fotakernel_$sin_type.img
+#mv $backuppwd/weekly/LINUX/android/out/target/product/foo/fotakernel.sin $backuppwd/weekly/LINUX/android/out/target/product/foo/fotakernel_$sin_type.sin
 ###fota
-cp device/cci/sa77/radio/NON-HLOS.bin unsigned_imgs/modem.bin
-cp device/cci/sa77/radio/rpm.mbn unsigned_imgs
-#cp out/target/product/sa77/system.img unsigned_imgs
-cp out/target/product/sa77/userdata.img unsigned_imgs
-cp out/target/product/sa77/ramdumper.bin unsigned_imgs
-cp out/target/product/sa77/ltalabel.img unsigned_imgs
+cp device/cci/foo/radio/NON-HLOS.bin unsigned_imgs/modem.bin
+cp device/cci/foo/radio/rpm.mbn unsigned_imgs
+#cp out/target/product/foo/system.img unsigned_imgs
+cp out/target/product/foo/userdata.img unsigned_imgs
+cp out/target/product/foo/ramdumper.bin unsigned_imgs
+cp out/target/product/foo/ltalabel.img unsigned_imgs
 cd unsigned_imgs
 rm -rf ../"$type"_SOMC_UNSIGNED.zip
 zip -y ../"$type"_SOMC_UNSIGNED.zip ./*

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export cm_build_project=sa77
+export cm_build_project=foo
 export cm_config_ok=n
 export cm_fetch_code_ok=n
 export cm_branch_ok=n
@@ -13,7 +13,7 @@ export cm_build_machine_core=$(grep -c ^processor /proc/cpuinfo)
 export cm_root_dir=`pwd`
 export cm_git_host_loc=10.113.0.56
 export cm_cme_name=san_hsu
-export cm_build_trunk=SA77.1214
+export cm_build_trunk=foo.1214
 export cm_build_date=`date +%Y%m%d`
 export cm_build_host_ip=`ifconfig eth0 | grep -i "inet addr" | awk '{print $2}' | awk 'BEGIN {FS=":"}{print $2}'`
 export cm_build_branch=

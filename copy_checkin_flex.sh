@@ -52,11 +52,11 @@ test -f Android_Flex_prop.csv && sed -i \
 ###
 #Factory
 #test -f Android_Flex_prop.csv && sed -i \
-#	-e '/ro\.cci\.flex_version/s/FF_DA80_Factory_[0-9]\{3\}/FF_DA80_Factory_'$version'/' \
-#       	-e '/ro\.version/s/DA80_ICS_[0-9]\{3\}/DA80_ICS_'$version'/g' \
-#       	-e '/ro\.build\.version\.client/s/DA80_ICS_[0-9]\{3\}/DA80_ICS_'$version'/g' \
+#	-e '/ro\.cci\.flex_version/s/FF_foo3_Factory_[0-9]\{3\}/FF_foo3_Factory_'$version'/' \
+#       	-e '/ro\.version/s/foo3_ICS_[0-9]\{3\}/foo3_ICS_'$version'/g' \
+#       	-e '/ro\.build\.version\.client/s/foo3_ICS_[0-9]\{3\}/foo3_ICS_'$version'/g' \
 #       	-e '/ro\.build\.display\.id/s/[0-9]\{3\}-MLC-Factory/'$version'-MLC-Factory/' \
-#       	-e '/ro\.build\.version\.incremental/s/Android\.DA80_ICS_[0-9]\{3\}/Android.DA80_ICS_'$version'/g' \
+#       	-e '/ro\.build\.version\.incremental/s/Android\.foo3_ICS_[0-9]\{3\}/Android.foo3_ICS_'$version'/g' \
 #       	Android_Flex_prop.csv
 ###
 
